@@ -2,6 +2,7 @@ import { GenderEnum } from "../utilities/enums/EnumGender";
 
 export class Account
 {
+    public id: number;
     public fullname: string;
     public dateBorn: Date;
     public documentCpf: string;
