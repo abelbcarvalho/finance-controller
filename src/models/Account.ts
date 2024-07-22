@@ -6,4 +6,9 @@ export class Account
     public dateBorn: Date;
     public documentCpf: string;
     public gender: GenderEnum;
+    public username: string;
+    public email?: string;
+    public password: string;
+    public createdAt: Date;
+    public updatedAt: Date;
 }
