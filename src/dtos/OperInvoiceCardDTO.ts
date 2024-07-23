@@ -1,8 +1,6 @@
 import { TypeOperEnum } from "../utilities/enums/EnumTypeOper";
 
-
-export interface OperInvoiceCardDTO
-{
+export interface OperInvoiceCardDTO {
     invoiceCardId: number;
     descript: string;
     balance: number;

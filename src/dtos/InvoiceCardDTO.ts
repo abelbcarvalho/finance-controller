@@ -1,5 +1,4 @@
-export interface InvoiceCardDTO
-{
+export interface InvoiceCardDTO {
     cardId: number;
     descript: string;
     installments: number;

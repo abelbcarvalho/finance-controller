@@ -1,5 +1,4 @@
-export interface CashBoxDTO
-{
+export interface CashBoxDTO {
     cashId: number;
     descript: string;
     balance: number;

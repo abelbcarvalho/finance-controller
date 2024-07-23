@@ -1,8 +1,6 @@
 import { BankEnum } from "../utilities/enums/EnumBank";
 
-
-export interface BankDTO
-{
+export interface BankDTO {
     code: number;
     name: string;
     numberAccount: number;

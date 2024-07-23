@@ -1,8 +1,6 @@
 import { TypeOperEnum } from "../utilities/enums/EnumTypeOper";
 
-
-export interface OperBankBoxDTO
-{
+export interface OperBankBoxDTO {
     bankBoxId: number;
     descript: string;
     balance: number;

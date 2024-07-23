@@ -1,5 +1,4 @@
-export interface BankBoxDTO
-{
+export interface BankBoxDTO {
     bankId: number;
     descript: string;
     balance: number;

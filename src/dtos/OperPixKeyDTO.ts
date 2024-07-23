@@ -1,8 +1,6 @@
 import { TypeOperEnum } from "../utilities/enums/EnumTypeOper";
 
-
-export interface OperPixKeyDTO
-{
+export interface OperPixKeyDTO {
     pixKeyId: number;
     receptPixKey?: string;
     recepterName?: string;

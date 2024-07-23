@@ -1,15 +1,14 @@
 import { BankEnum } from "../utilities/enums/EnumBank";
 
-export class Bank
-{
-    public id: number;
-    public code: number;
-    public name: string;
-    public numberAccount: number;
-    public agency: number;
-    public typeAccount: BankEnum;
-    public variation: number;
-    public balance: number;
-    public createdAt: Date;
-    public updatedAt: Date;
+export class Bank {
+    public id: number = 0;
+    public code: number = 0;
+    public name: string = "";
+    public numberAccount: number = 0;
+    public agency: number = 0;
+    public typeAccount: BankEnum = BankEnum.CHECKING;
+    public variation: number = 0;
+    public balance: number = 0;
+    public createdAt!: Date;
+    public updatedAt!: Date;
 }

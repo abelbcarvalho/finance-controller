@@ -1,5 +1,4 @@
-export interface CashDTO
-{
+export interface CashDTO {
     accountId: number;
     totalBalance: number;
 }

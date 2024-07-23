@@ -1,11 +1,10 @@
-export class BankBox
-{
-    public id: number;
-    public bankId: number;
-    public descript: string;
-    public balance: number;
-    public goal?: number;
+export class BankBox {
+    public id: number = 0;
+    public bankId: number = 0;
+    public descript: string = "";
+    public balance: number = 0;
+    public goal?: number = 0;
     public espireDate?: Date;
-    public createdAt: Date;
-    public updatedAt: Date;
+    public createdAt!: Date;
+    public updatedAt!: Date;
 }

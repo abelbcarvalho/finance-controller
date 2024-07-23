@@ -1,8 +1,6 @@
-import {express, Application} from "express";
+import express, { Application } from "express";
 
-
-class App
-{
+class App {
     public app: Application;
     public port: number;
 

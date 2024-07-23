@@ -1,8 +1,6 @@
 import { GenderEnum } from "../utilities/enums/EnumGender";
 
-
-export interface AccountDTO
-{
+export interface AccountDTO {
     fullname: string;
     dateBorn: Date;
     documentCpf: string;
