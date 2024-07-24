@@ -1,5 +1,4 @@
-export enum TypeOperEnum
-{
+export enum TypeOperEnum {
     DEPOSIT = "deposit",
     WITHDRAW = "withdraw",
     PAYMENT = "payment"

@@ -1,5 +1,4 @@
-export enum FlagCardEnum
-{
+export enum FlagCardEnum {
     VISA = "visa",
     MASTERCARD = "mastercard",
     ELO = "elo",

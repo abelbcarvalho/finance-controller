@@ -1,5 +1,4 @@
-export enum PixKeyEnum
-{
+export enum PixKeyEnum {
     RANDOM = "random",
     EMAIL = "email",
     CPF = "cpf",

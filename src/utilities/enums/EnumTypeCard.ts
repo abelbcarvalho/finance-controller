@@ -1,5 +1,4 @@
-export enum TypeCardEnum
-{
+export enum TypeCardEnum {
     CREDIT = "credit",
     DEBIT = "debit",
     CREDIT_DEBIT = "credit-debit",

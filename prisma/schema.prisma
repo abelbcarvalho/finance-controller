@@ -1,0 +1,262 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// maping the tables
+
+model Account {
+  id          Int        @id @default(autoincrement())
+  fullname    String
+  dateBorn    DateTime
+  documentCpf String
+  gender      GenderEnum
+  username    String
+  email       String?    @unique
+  password    String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  banks  Bank[]
+  cashes Cash[]
+}
+
+model Bank {
+  id            Int      @id @default(autoincrement())
+  code          Int
+  name          String
+  numberAccount Int
+  agency        Int
+  typeAccount   BankEnum
+  variation     Int
+  balance       Float
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  accountId Int
+  account   Account    @relation(fields: [accountId], references: [id])
+  bankBoxes BankBox[]
+  cards     Card[]
+  pixKeys   PixKey[]
+  operBanks OperBank[]
+}
+
+model BankBox {
+  id         Int       @id @default(autoincrement())
+  descript   String
+  balance    Float
+  goal       Float?
+  expireDate DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  bankId        Int
+  bank          Bank          @relation(fields: [bankId], references: [id])
+  operBankBoxes OperBankBox[]
+}
+
+model Card {
+  id           Int          @id @default(autoincrement())
+  flag         FlagCardEnum
+  numberCard   String
+  securityCode String
+  expireDate   DateTime
+  isTemp       Boolean
+  typeCard     TypeCardEnum
+  cardLimit    Float?
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  bankId   Int
+  bank     Bank          @relation(fields: [bankId], references: [id])
+  invoices InvoiceCard[]
+}
+
+model Cash {
+  id           Int      @id @default(autoincrement())
+  totalBalance Float
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  accountId Int
+  account   Account    @relation(fields: [accountId], references: [id])
+  cashBoxes CashBox[]
+  operCashs OperCash[]
+}
+
+model CashBox {
+  id         Int       @id @default(autoincrement())
+  descript   String
+  balance    Float
+  goal       Float?
+  expireDate DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  cashId        Int
+  cash          Cash          @relation(fields: [cashId], references: [id])
+  operCashBoxes OperCashBox[]
+}
+
+model InvoiceCard {
+  id             Int      @id @default(autoincrement())
+  descript       String
+  installments   Int
+  currentInstall Int
+  totalInvoice   Float
+  installValue   Float
+  isFinish       Boolean
+  discount       Float?
+  interest       Float?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  cardId           Int
+  card             Card              @relation(fields: [cardId], references: [id])
+  operInvoiceCards OperInvoiceCard[]
+}
+
+model PixKey {
+  id        Int        @id @default(autoincrement())
+  descipt   String?
+  keyType   PixKeyEnum
+  pixKey    String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  bankId      Int
+  bank        Bank         @relation(fields: [bankId], references: [id])
+  operPixKeys OperPixKey[]
+}
+
+model OperBank {
+  id            Int          @id @default(autoincrement())
+  descript      String
+  balance       Float
+  typeOperation TypeOperEnum
+  isExternal    Boolean
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  bankId Int
+  bank   Bank @relation(fields: [bankId], references: [id])
+}
+
+model OperBankBox {
+  id            Int          @id @default(autoincrement())
+  descript      String
+  balance       Float
+  typeOperation TypeOperEnum
+  isExternal    Boolean
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  bankBoxId Int
+  bankBox   BankBox @relation(fields: [bankBoxId], references: [id])
+}
+
+model OperCash {
+  id            Int          @id @default(autoincrement())
+  descript      String
+  balance       Float
+  typeOperation TypeOperEnum
+  isExternal    Boolean
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  cashId Int
+  cash   Cash @relation(fields: [cashId], references: [id])
+}
+
+model OperCashBox {
+  id            Int          @id @default(autoincrement())
+  descript      String
+  balance       Float
+  typeOperation TypeOperEnum
+  isExternal    Boolean
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  cashBoxId Int
+  cashBox   CashBox @relation(fields: [cashBoxId], references: [id])
+}
+
+model OperInvoiceCard {
+  id            Int          @id @default(autoincrement())
+  descript      String
+  balance       Float
+  typeOperation TypeOperEnum
+  isExternal    Boolean
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  invoiceCardId Int
+  invoiceCard   InvoiceCard @relation(fields: [invoiceCardId], references: [id])
+}
+
+model OperPixKey {
+  id            Int          @id @default(autoincrement())
+  descript      String
+  receptPixKey  String?
+  recepterName  String?
+  balance       Float
+  typeOperation TypeOperEnum
+  isExternal    Boolean
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  pixKeyId Int
+  pixKey   PixKey @relation(fields: [pixKeyId], references: [id])
+}
+
+enum GenderEnum {
+  MALE   @map("male")
+  FEMALE @map("female")
+  NOTBIN @map("not binary")
+}
+
+enum BankEnum {
+  CHECKING @map("checking")
+  SAVING   @map("saving")
+  PAYMENT  @map("payment")
+}
+
+enum FlagCardEnum {
+  VISA       @map("visa")
+  MASTERCARD @map("mastercard")
+  ELO        @map("elo")
+  HIPERCARD  @map("hipercard")
+  AMEX       @map("american-express")
+  DINERS     @map("diners-club")
+}
+
+enum TypeCardEnum {
+  CREDIT       @map("credit")
+  DEBIT        @map("debit")
+  CREDIT_DEBIT @map("credit-debit")
+  PRE_PAID     @map("pre-paid")
+}
+
+enum TypeOperEnum {
+  DEPOSIT  @map("deposit")
+  WITHDRAW @map("withdraw")
+  PAYMENT  @map("payment")
+}
+
+enum PixKeyEnum {
+  RANDOM @map("random")
+  EMAIL  @map("email")
+  CPF    @map("cpf")
+  CNPJ   @map("cnpj")
+  MOBILE @map("mobile")
+}

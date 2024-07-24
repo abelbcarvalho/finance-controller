@@ -1,5 +1,4 @@
-export enum GenderEnum
-{
+export enum GenderEnum {
     MALE="male",
     FEMALE="female",
     NOTBIN="not binary"

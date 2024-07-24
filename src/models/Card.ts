@@ -3,6 +3,7 @@ import { TypeCardEnum } from "../utilities/enums/EnumTypeCard";
 
 export class Card {
     public id: number = 0;
+    public bankId: number = 0;
     public flag: FlagCardEnum = FlagCardEnum.AMEX;
     public numberCard: string = "";
     public securityCode: string = "";
