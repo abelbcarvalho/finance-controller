@@ -33,6 +33,9 @@
       "@exceptions/*": ["src/exceptions/*"],
       "@enums/*": ["src/utilities/enums/*"],
       "@dtos/*": ["src/dtos/*"],
+      "@controllers/*": ["src/controllers/*"],
+      "@services/*": ["src/services/*"],
+      "@use-cases/*": ["src/use-cases/*"],
     },                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
