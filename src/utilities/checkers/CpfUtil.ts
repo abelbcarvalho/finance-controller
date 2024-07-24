@@ -1,4 +1,4 @@
-import { CpfError } from "../../exceptions/CpfError";
+import { CpfError } from "@exceptions/CpfError";
 
 const checkRegexCPF = (cpf: string): void => {
     const regexCpf = "^[0-9]{11}$";
@@ -10,7 +10,6 @@ const checkRegexCPF = (cpf: string): void => {
     if (!matched)
         throw new CpfError("document cpf doesn't match to the partern", 400);
 };
-
 
 const checkCalcCPF = (cpf: string): void => {
     const nineDigits = cpf.substring(0, 9).split("").reverse();

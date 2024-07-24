@@ -1,4 +1,4 @@
-import { TypeOperEnum } from "../utilities/enums/EnumTypeOper";
+import { TypeOperEnum } from "@enums/EnumTypeOper";
 
 export abstract class Operation {
     public descript: string = "";

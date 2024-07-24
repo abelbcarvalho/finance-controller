@@ -1,4 +1,4 @@
-import { BankEnum } from "../utilities/enums/EnumBank";
+import { BankEnum } from "@enums/EnumBank";
 
 export interface BankDTO {
     code: number;

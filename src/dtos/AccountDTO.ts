@@ -1,4 +1,4 @@
-import { GenderEnum } from "../utilities/enums/EnumGender";
+import { GenderEnum } from "@enums/EnumGender";
 
 export interface AccountDTO {
     fullname: string;

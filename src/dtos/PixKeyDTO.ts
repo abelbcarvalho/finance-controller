@@ -1,4 +1,4 @@
-import { PixKeyEnum } from "../utilities/enums/EnumPixKey"
+import { PixKeyEnum } from "@enums/EnumPixKey";
 
 export interface PixKeyDTO {
     bankId: number;

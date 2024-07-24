@@ -1,5 +1,5 @@
-import { FlagCardEnum } from "../utilities/enums/EnumFlagCard";
-import { TypeCardEnum } from "../utilities/enums/EnumTypeCard";
+import { FlagCardEnum } from "@enums/EnumFlagCard";
+import { TypeCardEnum } from "@enums/EnumTypeCard";
 
 export interface CardDTO {
     flag: FlagCardEnum;
