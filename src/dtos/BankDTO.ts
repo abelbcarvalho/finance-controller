@@ -3,8 +3,8 @@ import { BankEnum } from "@enums/EnumBank";
 export interface BankDTO {
     code: number;
     name: string;
-    numberAccount: number;
-    agency: number;
+    numberAccount: string;
+    agency: string;
     typeAccount: BankEnum;
     variation: number;
     balance: number;
